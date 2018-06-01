@@ -1,15 +1,17 @@
+require('./server/config/config');
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
-const mongoose = require('mongoose');
 
+const {mongoose} = require('./server/db/mongoose');
 const Category = require('./models/category.model');
 
 // Mongoose Connect
-mongoose.connect('mongodb://localhost/sportsblog');
-const db = mongoose.connection;
+// mongoose.connect('mongodb://localhost/sportsblog');
+// const db = mongoose.connection;
 
 const indexRoute = require('./routes/index');
 const articlesRoute = require('./routes/articles');
@@ -17,6 +19,7 @@ const manageRoute = require('./routes/manage');
 const categoriesRoute = require('./routes/categories');
 
 const app = express();
+const port = process.env.PORT;
 
 // View Setup
 app.set('views', path.join(__dirname + '/views'));
@@ -51,4 +54,4 @@ app.use('/articles', articlesRoute);
 app.use('/manage', manageRoute);
 app.use('/categories', categoriesRoute);
 
-app.listen(3000, () => console.log('Listening to port 3000'));
+app.listen(port, () => console.log(`Listening to port ${port}`));
