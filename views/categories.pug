@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .container.mt-4
+        .clearfix.mb-4
+            h3.float-left= title
+            a.btn.btn-success.float-right(href='/manage/categories', role='button') Manage Categories
+        ul.list-group
+            each category, i in categories
+                li.list-group-item
+                    a(href='/articles/category/' + category._id)= category.title

@@ -1,0 +1,27 @@
+.dropdown-menu {
+    right: 0;
+    left: initial;
+}
+#messages {
+    margin: 10px;
+}
+
+#messages ul {
+    margin: 0;
+    padding: 0;
+}
+
+#messages li {
+    list-style: none;
+    padding: 10px;
+}
+
+#messages .success {
+    background: green;
+    color: #fff;
+}
+
+#messages .error {
+    background: red;
+    color: #fff;
+}

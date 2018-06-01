@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container.mt-4
+        .clearfix.mb-4
+            h3.float-left= title
+            a.btn.btn-success.float-right(href='/manage/categories/add', role='button') Add Category
+        != messages()
+        table.table.table-striped
+            thead
+                tr
+                    th(scope='col') Category Title
+                    th(scope='col') Action
+            tbody
+                each category, i in categories
+                    tr
+                        td= category.title
+                        td
+                            a.button.btn.btn-primary.mb-2(href='/manage/categories/edit/' + category._id) Edit
+                            a.button.btn.btn-danger.mb-2.ml-2.btn-category-delete(href='javascript:void(0)' id= category._id) Delete

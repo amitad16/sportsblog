@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .jumbotron
+        .container
+            h1.display-3= title
+            p
+                | This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+    .container
+        .row
+            .col-md-12
+                each article, i in articles
+                    .article-wrapper.card.m-3
+                        .card-body
+                            a.article-title(href="/articles/show/" + article._id)
+                                h3= article.title
+                            span.article-category= article.category
+                            .article-about
+                                p.post-media
+                                    | Posted by #{article.author}
+                                    | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                                    hr
+                            .article-body= article.body

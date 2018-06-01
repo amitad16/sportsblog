@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .container
+        h3= title
+        if (errors)
+            if (errors.title)
+                .alert.alert-danger= errors.title.msg
+            if (errors.category)
+                .alert.alert-danger= errors.category.msg
+            if (errors.author)
+                .alert.alert-danger= errors.author.msg
+            if (errors.body)
+                .alert.alert-danger= errors.body.msg
+        form(action='/articles/add', method='post')
+            .form-group
+                label(for='title') Title
+                input#title.form-control(type='text', name='title' placeholder='Title')
+            .form-group
+                label(for='category') Category
+                select#category.form-control(name='category')
+                     each category, i in categories
+                         option(value= category.title)= category.title
+            .form-group
+                label(for='author') Author
+                input#author.form-control(type='text', name='author' placeholder='Author')
+            .form-group
+                label(for='body') Body
+                textarea#body.form-control(rows='5', name='body')
+            button.btn.btn-primary(type='submit') Submit

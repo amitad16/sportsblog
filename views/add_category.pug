@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .container
+        h3= title
+        if (errors)
+            .alert.alert-danger= errors.title.msg
+        form(action='/categories/add', method='post')
+            .form-group
+                label(for='name') Category Name
+                input#name.form-control(type='text', name='title', placeholder='Category Name')
+            button.btn.btn-primary.mb-2(type='submit') Add Category
+            a.btn.btn-warning.mb-2.ml-2(href='/manage/categories') Back

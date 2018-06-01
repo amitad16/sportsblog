@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    .container.mt-4
+        .clearfix.mb-4
+            h3.float-left= title
+            a.btn.btn-success.float-right(href='/manage/articles/add', role='button') Add Article
+        != messages()
+        table.table.table-striped
+            thead
+                tr
+                    th(scope='col') Title
+                    th(scope='col') Date Published
+                    th(scope='col') Author
+                    th(scope='col') Action
+            tbody
+                each article, i in articles
+                    tr
+                        td= article.title
+                        td= moment(article.created_at).format('MMMM D0 YYYY, h:mm:ss a')
+                        td= article.author
+                        td
+                            a.button.btn.btn-primary.mb-2(href='/manage/articles/edit/' + article._id) Edit
+                            a.button.btn.btn-danger.mb-2.ml-2.btn-article-delete(href='javascript:void(0)' id= article._id) Delete

@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-md-12
+                .article-wrapper.card.m-3
+                    .card-body
+                        h3.article-title= article.title
+                        span.article-category= article.category
+                        .article-about
+                            p.post-media
+                                | Posted by #{article.author}
+                                | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                                hr
+                        .article-body= article.body
+
+        form.comment-form(method='post', action='/articles/comments/add/' + article._id)
+            .form-group
+                label(for='subject') Subject
+                input#subject.form-control(type='text', name='comment_subject', placeholder='Subject')
+            .form-group
+                label(for='author') Name
+                input#author.form-control(type='text', name='comment_author', placeholder='Name')
+            .form-group
+                label(for='email') Email
+                input#email.form-control(type='email', name='comment_email', placeholder='Email')
+            .form-group
+                label(for='body') Body
+                textarea#body.form-control(name='comment_body', rows='5')
+            button.btn.btn-default.mb-2.ml-2(type='submit') Add Comment
+
+        .comments
+            each comment, i in article.comments
+                .card.card-body
+                    h5 Posted By #{comment.comment_author}
+                    p= comment.comment_body

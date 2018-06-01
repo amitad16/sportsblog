@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container
+        if (count)
+            .alert-warning Sorry No Articles found in this category
+        else
+            .container
+                .row
+                    .col-md-12
+                        each article, i in articles
+                            .article-wrapper.card.m-3
+                                .card-body
+                                    a.article-title(href="/articles/show/" + article._id)
+                                        h3= article.title
+                                    span.article-category= article.category
+                                    .article-about
+                                        p.post-media
+                                            | Posted by #{article.author}
+                                            | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
