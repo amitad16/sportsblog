@@ -1,5 +1,6 @@
 # SportsBlog
 This is a simple blogging application indicates the working of CRUD operations in MongoDB using NodeJS and Express framework.
+You can see the [working here](https://enigmatic-scrubland-68315.herokuapp.com/)
 
 ## Usage
 Goto `server > config`
