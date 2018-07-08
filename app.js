@@ -22,18 +22,18 @@ const app = express();
 const port = process.env.PORT;
 
 // View Setup
-app.set('views', path.join(__dirname + '/views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // Moment
 app.locals.moment = require('moment');
 
-// Body Parser
+// Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set static folder
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
 app.use(session({
